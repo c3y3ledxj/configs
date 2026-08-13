@@ -1,2 +1,5 @@
 # configs
-personal notes
+
+Personal dotfiles and service configs.
+
+Managed manually; keep it simple.
