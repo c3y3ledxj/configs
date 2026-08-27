@@ -1,5 +1,5 @@
 # golangci-lint configuration shared across Go projects.
-# See https://golangci-lint.run/usage/configuration/
+# Usage: golangci-lint run ./...
 
 run:
   timeout: 5m
@@ -8,20 +8,28 @@ run:
 linters:
   enable:
     - errcheck
+    - gosimple
     - govet
     - ineffassign
     - staticcheck
     - unused
-    - misspell
-    - revive
+  disable:
+    - exhaustruct
+  presets:
+    - bugs
+    - performance
+
+linters-settings:
+  errcheck:
+    check-type-assertions: true
+    check-blank: true
+  govet:
+    enable:
+      - fieldalignment
+    disable:
+      - shadow
 
 issues:
   exclude-use-default: false
   max-issues-per-linter: 0
   max-same-issues: 0
-
-linters-settings:
-  revive:
-    rules:
-      - name: exported
-      - name: package-comments
